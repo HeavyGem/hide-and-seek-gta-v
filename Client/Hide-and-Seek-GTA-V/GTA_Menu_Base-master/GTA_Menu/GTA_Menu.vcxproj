@@ -67,6 +67,7 @@
     <ClCompile Include="Buttons.cpp" />
     <ClCompile Include="Colors.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="HideandSeekMode.cpp" />
     <ClCompile Include="Huds.cpp" />
     <ClCompile Include="Invoker.cpp" />
     <ClCompile Include="Menu.cpp" />
@@ -81,6 +82,7 @@
     <ClInclude Include="Buttons.h" />
     <ClInclude Include="Colors.h" />
     <ClInclude Include="Dialog.h" />
+    <ClInclude Include="HideandSeekMode.h" />
     <ClInclude Include="Huds.h" />
     <ClInclude Include="Includes.h" />
     <ClInclude Include="Invoker.h" />

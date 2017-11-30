@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type">
+    <style type="text/css">
+        .tahoma {
+            font-family: Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .petit {
+            font-size: xx-small;
+        }
+        .noir {
+            color: #000000;
+        }
+        .rouge {
+            color: #FF0000;
+        }
+        .bleu {
+            color: #0000FF;
+        }
+        .vert {
+            color: #2BB02B;
+        }
+    </style>
+  </head>
+
+  <body>
+	<div style="text-align: center;" class="tahoma">
+    <h2>Hide & Seek - GTA V Serveur</h2>
+    <br>
+		<form action="" method="POST">
+			Serveur actif<br><br>
+			Utilisé par : {{ user }}
+			<INPUT type="submit" value="Libérer">
+		</form>
+    <br>
+	</div>
+
+    <span class="tahoma">Les communications avec le serveur s’effectuent en utilisant des requêtes
+    <strong>GET</strong> parmi&nbsp; :</span><br class="tahoma">
+    <br class="tahoma">
+    <br class="tahoma">
+    <span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>isRaceOnProgress</strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br class="tahoma">&nbsp;&nbsp;&nbsp; Réponse :&nbsp;
+	<span class="bleu"><strong>True</strong></span>&nbsp; ou&nbsp;
+	<span class="bleu"><strong>False</strong></span>&nbsp;
+    suivant qu’une course est en cours ou pas<br class="tahoma">
+    <br class="tahoma petit">
+    http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>reinitRace</strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <br class="tahoma"><span class="tahoma">&nbsp;&nbsp;&nbsp; Effet : (re)démarre une course en (ré)initialisant
+    tous les paramètres (liste des participants, des lieux à atteindre,…)&nbsp;
+    </span>
+    <br class="tahoma">
+    <span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse : message d’aquittement</span><br class="tahoma">
+    <br class="tahoma petit">
+    <span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>stopRace</strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <br class="tahoma"><span class="tahoma">&nbsp;&nbsp;&nbsp; Effet : arrête la course en cours sans réinitialiser
+    ses paramètres (en particulier le nom de l’éventuel vainqueur)</span><br class="tahoma">
+    <span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse : message d’aquittement</span><br class="tahoma">
+    <br class="tahoma petit">
+    <span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>addParticipant</strong></span>&amp;<strong>name</strong>=<span class="bleu"><strong><em>nom</em></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <br class="tahoma"><span class="tahoma">&nbsp;&nbsp;&nbsp; Effet :&nbsp; ajoute le
+	participant&nbsp; <span class="bleu"><strong><em>nom</em></strong></span>&nbsp; à la liste des participants </span> <br class="tahoma">
+    <span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse : message d’aquittement ou&nbsp;
+	<span class="bleu"><strong>None</strong></span>&nbsp; si
+    ajout impossible (pas de course en cours, participant déjà présent)</span><br class="tahoma">
+    <br class="tahoma petit">
+    <span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>removeParticipant</strong></span>&amp;<strong>name</strong>=<span class="bleu"><strong><em>nom</em></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <br class="tahoma"><span class="tahoma">&nbsp;&nbsp;&nbsp; Effet :&nbsp; retire le participant&nbsp;&nbsp;
+    <span class="bleu"><strong><em>nom</em></strong></span>&nbsp; de la liste des participants
+	</span> <br class="tahoma">
+    <span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse : message d’aquittement ou&nbsp;
+	<span class="bleu"><strong>None</strong></span>&nbsp; si
+    retrait impossible (pas de course en cours, participant absent)</span><br class="tahoma">
+    <br class="tahoma petit">
+    <span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>getParticipants</strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <br class="tahoma"><span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse :&nbsp;
+	<span class="bleu"><strong><em>liste des participants</em></strong></span>&nbsp; (noms
+    séparés par des virgules)&nbsp; ou&nbsp; <span class="bleu"><strong>None</strong></span>&nbsp; si pas de course en
+    cours</span><br class="tahoma">
+    <br class="tahoma petit">
+    <span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>getPosition</strong></span>&amp;<strong>name</strong>=<span class="bleu"><em><strong>nom</strong></em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	</span>
+    <br class="tahoma"><span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse :
+	<span class="bleu"><strong><em>latitude, longitude </em></strong>
+	</span>du participant ou&nbsp;
+    <span class="bleu"><strong>None</strong></span>&nbsp; si indisponibles (pas de course en cours, participant absent)</span><br class="tahoma">
+    <br class="tahoma petit">
+	<span class="tahoma">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>setPosition</strong></span>&amp;<strong>name</strong>=<span class="bleu"><em><strong>nom</strong></em></span>&amp;<strong>lat</strong>=<span class="bleu"><em><strong>latitude</strong></em></span>&amp;<strong>lon</strong>=<span class="bleu"><em><strong>longitude</strong></em></span></span><br class="tahoma">
+    <span class="tahoma">&nbsp;&nbsp;&nbsp; Effet :&nbsp; definit la position
+	<span class="bleu"><strong><em>latitude,
+    longitude&nbsp;</em></strong></span> du participant&nbsp;
+	<span class="bleu"><strong><em>nom</em></strong></span></span><br class="tahoma">
+    <span class="tahoma">&nbsp;&nbsp;&nbsp; Réponse : message d’aquittement ou&nbsp;
+	<span class="bleu"><strong>None</strong></span>&nbsp; si
+    impossible (pas de course en cours, participant absent)<br>
+    <br class="tahoma petit">
+    http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>getGoal</strong></span>&amp;<strong>name</strong>=<span class="bleu"><em><strong>nom</strong></em></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br class="tahoma">&nbsp;&nbsp;&nbsp; Réponse :
+	<em><strong>
+	<span class="bleu">cible, latitude, longitude&nbsp;
+	</span></strong> </em>description et coodonnées de la cible à atteindre par
+	le participant ou&nbsp;
+    <span class="bleu"><strong>None</strong></span>&nbsp; si indisponible<br>
+    <br class="tahoma petit">
+    http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>setGoalReached</strong></span>&amp;<strong>name</strong>=<span class="bleu"><strong><em>nom</em></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br class="tahoma">&nbsp;&nbsp;&nbsp; Effet :&nbsp; -
+	<span class="noir">si numéro de cible atteinte<em><span class="bleu"><strong>
+	k</strong></span></em> = 3, définit<strong><span class="bleu"><em>&nbsp;nom&nbsp;</em></span></strong>comme
+	vainqueur et arrête la course <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	- sinon renvoie le numéro<em><span class="bleu"><strong>&nbsp;k</strong></span></em>&nbsp; de la cible atteinte puis l'incrémente
+	(prochaine cible à atteindre)</span><br class="tahoma">
+    &nbsp;&nbsp;&nbsp; Réponse :
+	<span class="bleu"><strong><em>k</em></strong></span>&nbsp; &lt;= 3 numéro
+	de la cible atteinte ou&nbsp;
+    <span class="bleu"><strong>None</strong></span>&nbsp; si course déja terminée ou
+	si opération impossible<br>
+    <br class="tahoma petit">
+    http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>sendMessage</strong></span>&amp;<strong>name</strong>=<span class="bleu"><strong><em>nom</em></strong></span><span class="noir">&amp;<strong>msg</strong></span><strong><span class="noir">=</span><span class="bleu"><em>message&nbsp;</em></span></strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br class="tahoma">&nbsp;&nbsp;&nbsp; Effet :&nbsp; ajoute le
+	<span class="bleu"><em><strong>message</strong></em></span>&nbsp; à
+	la file d'attente du participant&nbsp; <span class="bleu"><strong><em>nom</em></strong></span><br class="tahoma">
+    &nbsp;&nbsp;&nbsp; Réponse :
+	message d’aquittement ou&nbsp;
+    <span class="bleu"><strong>None</strong></span>&nbsp; si opération impossible<br>
+    <br class="tahoma petit">
+    http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>getMessage</strong></span>&amp;<strong>name</strong>=<span class="bleu"><strong><em>nom</em></strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br class="tahoma">&nbsp;&nbsp;&nbsp; Effet :&nbsp; retire et renvoie le message en tête de
+	la file d'attente du participant&nbsp; <span class="bleu"><strong><em>nom</em></strong></span><br class="tahoma">
+    &nbsp;&nbsp;&nbsp; Réponse :
+	<span class="bleu"><strong><em>message</em></strong></span>&nbsp; en
+	tête de la file ou&nbsp;
+    <span class="bleu"><strong>None</strong></span>&nbsp; si aucune présente ou si opération impossible<br>
+	<br class="petit">http://<span class="vert"><strong><em>adressse-serveur</em></strong></span>/?<strong>cmd</strong>=<span class="rouge"><strong>getWinner</strong></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<br class="tahoma">&nbsp;&nbsp;&nbsp; Réponse :&nbsp;
+	<span class="bleu"><strong><em>nom_du_vainqueur</em></strong></span>&nbsp; s’il est
+    déterminé ou&nbsp; <span class="bleu"><strong>None</strong></span>&nbsp; sinon<br></span><br class="tahoma">
+    </body>
+</html>
